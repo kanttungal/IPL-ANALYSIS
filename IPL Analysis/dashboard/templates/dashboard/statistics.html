@@ -1,0 +1,143 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Statistics - IPL Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="section-title floating">Statistics Overview</h1>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="row">
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <div class="card-body"> 
+                <i class="bi bi-calendar-check text-primary"></i>
+                <h3>{{ total_matches }}</h3>
+                <p>Total Matches</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <div class="card-body">
+                <i class="bi bi-people text-success"></i>
+                <h3>{{ total_teams }}</h3>
+                <p>Teams</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card stat-card">
+            <div class="card-body">
+                <i class="bi bi-person-circle text-info"></i>
+                <h3>{{ total_players }}</h3>
+                <p>Players</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Top Teams -->
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Top Teams by Win Percentage</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Team</th>
+                                <th>Win %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for team in top_teams %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ team.name }}</td>
+                                <td>{{ team.win_percentage }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Top Run Scorers -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Top Run Scorers</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Team</th>
+                                <th>Runs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for player in top_scorers %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ player.name }}</td>
+                                <td>{{ player.team }}</td>
+                                <td>{{ player.runs }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Top Wicket Takers -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Top Wicket Takers</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Player</th>
+                                <th>Team</th>
+                                <th>Wickets</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for player in top_wicket_takers %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ player.name }}</td>
+                                <td>{{ player.team }}</td>
+                                <td>{{ player.wickets }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

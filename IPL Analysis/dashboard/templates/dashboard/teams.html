@@ -1,0 +1,47 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Teams - IPL Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="section-title floating">All Teams</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Teams Overview</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>Matches Played</th>
+                                <th>Wins</th>
+                                <th>Losses</th>
+                                <th>Win %</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for team in teams %}
+                            <tr>
+                                <td>{{ team.name }}</td>
+                                <td>{{ team.matches_played }}</td>
+                                <td>{{ team.wins }}</td>
+                                <td>{{ team.losses }}</td>
+                                <td>{{ team.win_percentage }}%</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

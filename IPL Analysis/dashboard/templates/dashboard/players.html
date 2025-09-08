@@ -1,0 +1,49 @@
+{% extends 'dashboard/base.html' %}
+
+{% block title %}Players - IPL Dashboard{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <h1 class="section-title floating">All Players</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Players Overview</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Player</th>
+                                <th>Team</th>
+                                <th>Matches Played</th>
+                                <th>Runs</th>
+                                <th>Wickets</th>
+                                <th>Average</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for player in players %}
+                            <tr>
+                                <td>{{ player.name }}</td>
+                                <td>{{ player.team }}</td>
+                                <td>{{ player.matches_played }}</td>
+                                <td>{{ player.runs }}</td>
+                                <td>{{ player.wickets }}</td>
+                                <td>{{ player.average }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
